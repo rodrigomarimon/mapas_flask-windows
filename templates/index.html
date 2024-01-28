@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Aplicativo</title>
+
+    <style>
+        img {
+            margin-top: 20px;
+            margin-left: 20%; /* Usando porcentagem para melhor responsividade */
+            width: 80%; /* Ajustando a largura para ocupar 80% da largura da tela */
+            height: auto;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+    <script>
+        function formatarCampo(campo) {
+            var valor = campo.value.replace(/\D/g, '');
+
+            if (valor.length === 8) {
+                campo.value = valor.substring(0, 4) + '-' + valor.substring(4, 6) + '-' + valor.substring(6, 8);
+            } else if (valor.length === 6) {
+                campo.value = valor.substring(0, 2) + ':' + valor.substring(2, 4) + ':' + valor.substring(4, 6);
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Adicionando um logo -->
+    <!-- <img src="{{ url_for('static', filename='images/pngtree-compass-on-a-stylized-map-image_1632501.png') }}" alt="Logo do Seu Aplicativo"> -->
+    <h1>Obtenha a rota</h1>
+    
+    <form action="{{ url_for('index') }}" method="post" enctype="multipart/form-data">
+        <label for="arquivo_csv">Escolha o arquivo CSV:</label>
+        <input type="file" id="arquivo_csv" name="arquivo_csv" accept=".csv" required>
+
+        <label for="data_inicial">Data Inicial (YYYY-MM-DD):</label>
+        <input type="text" id="data_inicial" name="data_inicial" pattern="\d{4}-\d{2}-\d{2}" oninput="formatarCampo(this)" required>
+        
+        <label for="hora_inicial">Hora Inicial (HH:MM:SS):</label>
+        <input type="text" id="hora_inicial" name="hora_inicial" pattern="\d{2}:\d{2}:\d{2}" oninput="formatarCampo(this)" required>
+        
+        <label for="data_final">Data Final (YYYY-MM-DD):</label>
+        <input type="text" id="data_final" name="data_final" pattern="\d{4}-\d{2}-\d{2}" oninput="formatarCampo(this)" required>
+        
+        <label for="hora_final">Hora Final (HH:MM:SS):</label>
+        <input type="text" id="hora_final" name="hora_final" pattern="\d{2}:\d{2}:\d{2}" oninput="formatarCampo(this)" required>
+        
+        <input type="submit" value="Criar Mapa">
+    </form>
+</body>
+</html>
