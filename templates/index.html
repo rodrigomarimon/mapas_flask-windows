@@ -59,6 +59,10 @@
             background-color: #45a049;
         }
     </style>
+    
+    
+    
+    
 
     <script>
         function formatarCampo(campo) {
@@ -77,9 +81,14 @@
     <!-- Adicionando um logo -->
     <!-- <img src="{{ url_for('static', filename='images/pngtree-compass-on-a-stylized-map-image_1632501.png') }}" alt="Logo do Seu Aplicativo"> -->
     <h1>Obtenha a rota</h1>
-    
+    <p>
+        ATENÇÂO! Antes de fazer o upload do arquivo, salvar no seu PC como .csv.
+    </p>
     <form action="{{ url_for('index') }}" method="post" enctype="multipart/form-data" style="max-width: 400px; margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #fff;">
         <label for="arquivo_csv">Escolha o arquivo CSV:</label>
+        <p>
+            Obs.: Somente .csv
+        </p>
         <input type="file" id="arquivo_csv" name="arquivo_csv" accept=".csv" required>
 
         <label for="data_inicial">Data Inicial (YYYY-MM-DD):</label>
@@ -96,6 +105,7 @@
         
         <input type="submit" value="Criar Mapa">
     </form>
+    
     {% if mapa_gerado %}
         <iframe src="{{ url_for('static', filename='mapa_deslocamento.html') }}" width="100%" height="600px"></iframe>
     {% endif %}
