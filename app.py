@@ -5,6 +5,8 @@ import folium
 import os
 from werkzeug.utils import secure_filename
 import platform
+import io
+from base64 import b64encode
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'csv'}
@@ -50,6 +52,7 @@ def carregar_dataframe_csv(caminho):
 
 
 def criar_mapa(df_filtrado):
+    
     print("Função criar_mapa chamada com DataFrame:")
     print(df_filtrado)
     if 'DataHora' not in df_filtrado.columns:
@@ -69,32 +72,27 @@ def criar_mapa(df_filtrado):
             popup_content = f"{row['Placa']} - {row['Data']} {row['Hora']} - Velocidade: {row['Velocidade']} km/h - LatLong: {[latitude, longitude]}<br><a href='{google_maps_link}' target='_blank'>Ver no Google Maps</a>"
 
             marker = folium.Marker(location=[latitude, longitude],
-                                  popup=folium.Popup(popup_content, max_width=300)
-                                  ).add_to(mapa)
+                                    popup=folium.Popup(popup_content, max_width=300)
+                                    ).add_to(mapa)
 
             tempo_anterior = row['DataHora']
 
-    # Use um caminho relativo para salvar o mapa
-    # mapa.save('static/mapa_deslocamento.html')
-    # Use o caminho absoluto para salvar o mapa
-    mapa.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static', 'mapa_deslocamento.html'))
-    abrir_mapa_no_navegador()
-        
-
-# def escolher_arquivo():
-#     file_path = filedialog.askopenfilename(filetypes=[("Arquivos CSVs", "*.csv")])
-#     if file_path:
-#         global df
-#         df = carregar_dataframe_csv(file_path)
+    caminho_mapa = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static', 'mapa_deslocamento.html')
+    mapa.save(caminho_mapa)
+    
+    return caminho_mapa
 from flask import send_from_directory
 
 @app.route('/mapa_deslocamento')
 def mapa_deslocamento():
-    return send_from_directory('static', 'mapa_deslocamento.html')
+    return render_template('mapa_deslocamento.html')
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     global df
+
+    mapa_gerado = False
+    caminho_mapa = None
     
     if request.method == 'POST':
         print("Método POST detectado")
@@ -137,10 +135,10 @@ def index():
             if df_filtrado.empty:
                 return render_template('index.html', mapa_gerado=False, mensagem_erro=f"Não há dados no intervalo de datas especificado: {data_inicial} {hora_inicial} - {data_final} {hora_final}")
             
-            criar_mapa(df_filtrado)
-            return render_template('index.html', mapa_gerado=True)
+            caminho_mapa = criar_mapa(df_filtrado)
+            mapa_gerado = True
 
-    return render_template('index.html', mapa_gerado=False)
+    return render_template('index.html', mapa_gerado=mapa_gerado, caminho_mapa=caminho_mapa)
 
 def abrir_mapa_no_navegador():
     # Determine o sistema operacional:
