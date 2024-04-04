@@ -76,12 +76,24 @@ def criar_mapa(df_filtrado):
                                     ).add_to(mapa)
 
             tempo_anterior = row['DataHora']
-
+    line_points = df_velocidade_zero[['Latitude', 'Longitude']]
     caminho_mapa = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static', 'mapa_deslocamento.html')
+    
+    lines_group = folium.FeatureGroup(name="Lines").add_to(mapa)
+    lines_group.add_child(folium.PolyLine(locations=line_points, weight=3,color = 'yellow'))
+    folium.LayerControl().add_to(mapa)
+    
     mapa.save(caminho_mapa)
     
     return caminho_mapa
 from flask import send_from_directory
+
+
+@app.route('/mapa_gerado/<filename>')
+def mapa_gerado(filename):
+    # Retorne o arquivo HTML gerado para download
+    return send_from_directory('static', filename)
+
 
 @app.route('/mapa_deslocamento')
 def mapa_deslocamento():
@@ -137,8 +149,12 @@ def index():
             
             caminho_mapa = criar_mapa(df_filtrado)
             mapa_gerado = True
+    if mapa_gerado:
+        link_download = f"/mapa_gerado/{os.path.basename(caminho_mapa)}"
+    else:
+        link_download = None
 
-    return render_template('index.html', mapa_gerado=mapa_gerado, caminho_mapa=caminho_mapa)
+    return render_template('index.html', mapa_gerado=mapa_gerado, caminho_mapa=caminho_mapa, link_download=link_download)
 
 def abrir_mapa_no_navegador():
     # Determine o sistema operacional:
