@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #1a1a1a; /* Cor de fundo escura */
+    color: #ffffff; /* Cor do texto */
+}
+
+.login-container {
+    width: 400px;
+    margin: 100px auto;
+    padding: 40px;
+    background-color: #333333; /* Cor do contêiner de login */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #ffffff; /* Cor do texto do título */
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 5px;
+    border: 1px solid #666666; /* Cor da borda do campo de entrada */
+    border-radius: 5px;
+    background-color: #444444; /* Cor do campo de entrada */
+    color: #ffffff; /* Cor do texto do campo de entrada */
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #00bfff; /* Cor da borda quando em foco */
+}
+
+.input-group i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+    color: #999999; /* Cor do ícone */
+}
+
+button {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00bfff; /* Cor do botão */
+    color: #ffffff; /* Cor do texto do botão */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0099cc; /* Cor do botão ao passar o mouse */
+}
+
+a {
+    color: #00bfff; /* Cor do link */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0099cc; /* Cor do link ao passar o mouse */
+}
+
+body {
+    background-image: url('/static/imagens/matrix3.jpg');
+    background-size: 95%; /* Para cobrir toda a tela */
+    background-position: center; /* Para centralizar a imagem */
+    background-repeat: no-repeat;
+    height: 100vh; /* altura igual à altura da janela do navegador */
+    width: 100%; /* largura igual à largura da janela do navegador */
+}

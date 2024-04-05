@@ -5,76 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seu Aplicativo</title>
-    <link rel="stylesheet" href="stilo.css">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            align-items: center;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        .container {
-            /* display: flex;
-            flex-direction: column;
-            align-items: center; */
-        }
-
-        .logo {
-            margin-top: 20px;
-            width: 80%;
-            max-width: 400px; /* Ajuste a largura máxima conforme necessário */
-        }
-
-        form {
-            max-width: 400px;
-            margin: auto;
-            margin-top: 20px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #fff;
-            height: 250px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        input[type="submit"] {
-            background-color: #83f016;
-            color: #b622b6;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #06030f;
-        }
-    </style>
-    
-    
-    
-    
-
+    <script src="/templates/logout.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stilo.css') }}">
+  
     <script>
         function formatarCampo(campo) {
             var valor = campo.value.replace(/\D/g, '');
@@ -90,7 +23,7 @@
 <body>
 
     <!-- Adicionando um logo -->
-    <img src="{{ url_for('static', filename='5705557-confundir-caminhos-rotas-isolados-em-fundo-branco-transporte-rastreamento-viagem-mapa-pinos-localizacao-pinos-vetor.png') }}" alt="Logo do Seu Aplicativo">
+    <!-- <img src="{{ url_for('static', filename='polvo-estilizado-34028423.webp') }}" alt="Logo do Seu Aplicativo"> -->
     <h1>Obtenha a rota</h1>
     <p>
         ATENÇÂO! Antes de fazer o upload do arquivo, salvar no seu PC como .csv.
@@ -179,6 +112,8 @@
         });
     });
 </script>
+    
+    
 </body>
 
 </html>
