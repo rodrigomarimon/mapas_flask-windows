@@ -35,46 +35,18 @@
         </p>
         <input type="file" id="arquivo_csv" name="arquivo_csv" accept=".csv" required>
 
-        <div class="form-group">
-            <label for="data_inicial">Data Inicial:</label>
-            <div class="input-group date" id="datetimepicker_data_inicial" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker_data_inicial" name="data_inicial" />
-                <div class="input-group-append" data-target="#datetimepicker_data_inicial" data-toggle="datetimepicker">
-                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                </div>
-            </div>
-        </div>
+        <label for="data_inicial">Data Inicial (YYYY-MM-DD):</label>
+        <input type="text" id="data_inicial" name="data_inicial" pattern="\d{4}-\d{2}-\d{2}" oninput="formatarCampo(this)" required>
 
-        <div class="form-group">
-            <label for="hora_inicial">Hora Inicial:</label>
-            <div class="input-group date" id="datetimepicker_hora_inicial" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker_hora_inicial" name="hora_inicial" />
-                <div class="input-group-append" data-target="#datetimepicker_hora_inicial" data-toggle="datetimepicker">
-                    <div class="input-group-text"><i class="fa fa-clock"></i></div>
-                </div>
-            </div>
-        </div>
+        <label for="hora_inicial">Hora Inicial (HH:MM:SS):</label>
+        <input type="text" id="hora_inicial" name="hora_inicial" pattern="\d{2}:\d{2}:\d{2}" oninput="formatarCampo(this)" required>
 
-        <div class="form-group">
-            <label for="data_final">Data Final:</label>
-            <div class="input-group date" id="datetimepicker_data_final" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker_data_final" name="data_final" />
-                <div class="input-group-append" data-target="#datetimepicker_data_final" data-toggle="datetimepicker">
-                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                </div>
-            </div>
-        </div>
+        <label for="data_final">Data Final (YYYY-MM-DD):</label>
+        <input type="text" id="data_final" name="data_final" pattern="\d{4}-\d{2}-\d{2}" oninput="formatarCampo(this)" required>
 
-        <div class="form-group">
-            <label for="hora_final">Hora Final:</label>
-            <div class="input-group date" id="datetimepicker_hora_final" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker_hora_final" name="hora_final" />
-                <div class="input-group-append" data-target="#datetimepicker_hora_final" data-toggle="datetimepicker">
-                    <div class="input-group-text"><i class="fa fa-clock"></i></div>
-                </div>
-            </div>
-        </div>
-        
+        <label for="hora_final">Hora Final (HH:MM:SS):</label>
+        <input type="text" id="hora_final" name="hora_final" pattern="\d{2}:\d{2}:\d{2}" oninput="formatarCampo(this)" required>
+
         <input type="submit" value="Criar Mapa">
     </form>
     

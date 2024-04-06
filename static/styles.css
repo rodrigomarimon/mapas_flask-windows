@@ -76,7 +76,7 @@ a:hover {
 
 body {
     background-image: url('/static/imagens/matrix3.jpg');
-    background-size: 95%; /* Para cobrir toda a tela */
+    background-size: 100%; /* Para cobrir toda a tela */
     background-position: center; /* Para centralizar a imagem */
     background-repeat: no-repeat;
     height: 100vh; /* altura igual à altura da janela do navegador */
