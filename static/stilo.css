@@ -13,6 +13,14 @@ body {
     background-repeat: no-repeat;
 }
 
+p {
+    color: #555;
+    font-style: italic;
+    font-weight: 900;
+    font-family: sans-serif;
+
+}
+
 h1 {
     color: #333;
     
@@ -45,6 +53,41 @@ label {
     display: block;
     margin-bottom: 8px;
     color: #555;
+    font-style: italic;
+    font-weight: 900;
+    font-family: sans-serif;
+    line-height: 10px;
+}
+a {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background:radial-gradient(ellipse at center, #adbf41 20%, #328a26 80%);
+    padding: 10px 20px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none; 
+}
+
+.tooltip {
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 5px;
+    display: none; /* Esconde o tooltip inicialmente */
+}
+
+/* Estilos para as opções no tooltip */
+.tooltip a {
+    display: block;
+    color: #000000;
+    text-decoration: none;
+    margin-bottom: 5px;
 }
 
 input {
@@ -55,15 +98,21 @@ input {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
+    background-color: antiquewhite;
 }
 
 input[type="submit"] {
-    background-color: #83f016;
-    color: #b622b6;
+    background-image: url("imagens/pexels-marina-leonova-7634150.jpg");
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+    font-weight: 900;
+    font-size: large;
+    color: #333;
     cursor: pointer;
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #f1f5f1;
 }
 

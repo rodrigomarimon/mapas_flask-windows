@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: #1a1a1a; /* Cor de fundo escura */
+    background-color: #040000; /* Cor de fundo escura */
     color: #ffffff; /* Cor do texto */
 }
 
@@ -10,7 +10,7 @@ body {
     width: 400px;
     margin: 100px auto;
     padding: 40px;
-    background-color: #333333; /* Cor do contêiner de login */
+    background:radial-gradient(ellipse at center, #adbf41 20%, #328a26 80%);
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra */
     text-align: center;
@@ -18,7 +18,7 @@ body {
 
 .login-container h2 {
     margin-bottom: 20px;
-    color: #ffffff; /* Cor do texto do título */
+    color: #333; /* Cor do texto do título */
 }
 
 .input-group {
@@ -37,7 +37,8 @@ body {
 
 .input-group input:focus {
     outline: none;
-    border-color: #00bfff; /* Cor da borda quando em foco */
+    /* border-color: #00bfff; */
+    
 }
 
 .input-group i {
@@ -53,7 +54,9 @@ button {
     padding: 12px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #00bfff; /* Cor do botão */
+    background-image: url("imagens/pexels-dmitry-demidov-3784221.jpg");
+    background-size: cover;
+    background-position: center;
     color: #ffffff; /* Cor do texto do botão */
     font-size: 16px;
     cursor: pointer;

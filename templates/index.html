@@ -4,10 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seu Aplicativo</title>
+    <title>Gerador de Mapas</title>
     <script src="/templates/logout.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stilo.css') }}">
-  
+    <style>
+/* Estilos para o tooltip */
+        .tooltip {
+            position: absolute;
+            top: calc(100% + 5px);
+            right: 0;
+            background-color: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            padding: 5px;
+            display: none; /* Esconde o tooltip inicialmente */
+        }
+
+        /* Estilos para as opções no tooltip */
+        .tooltip a {
+            display: block;
+            color: #000000;
+            text-decoration: none;
+            margin-bottom: 5px;
+        }
+
+    </style>
     <script>
         function formatarCampo(campo) {
             var valor = campo.value.replace(/\D/g, '');
@@ -21,18 +42,21 @@
     </script>
 </head>
 <body>
+    <!-- <a href="#" class="contact-link">Fale conosco</a> -->
 
-    <!-- Adicionando um logo -->
-    <!-- <img src="{{ url_for('static', filename='polvo-estilizado-34028423.webp') }}" alt="Logo do Seu Aplicativo"> -->
-    <h1>Obtenha a rota</h1>
-    <p>
-        ATENÇÂO! Antes de fazer o upload do arquivo, salvar no seu PC como .csv.
-    </p>
-    <form action="{{ url_for('index') }}" method="post" enctype="multipart/form-data" style="max-width: 400px; margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #fff;">
-        <label for="arquivo_csv">Escolha o arquivo CSV:</label>
-        <p>
-            Obs.: Somente .csv
-        </p>
+    <!-- Tooltip com opções -->
+    
+        <!-- <a href="mailto:marimonsc@gmail.com">Enviar E-mail</a> -->
+        <a href="https://api.whatsapp.com/send?phone=5548988331759" class="contact-link" target="_blank">Fale conosco <br> (WhatsApp)</a>
+
+
+    
+    <form action="{{ url_for('index') }}" method="post" enctype="multipart/form-data" style="max-width: 400px; margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background:radial-gradient(ellipse at center, #adbf41 20%, #328a26 80%);">
+        <!-- <label for="arquivo_csv">Escolha o arquivo CSV:</label> -->
+        
+            <p>Somente arquivos no formato .csv</p>
+            <p>ATENÇÂO! Antes de fazer o upload do arquivo, salvar no seu PC como .csv.</p>
+        
         <input type="file" id="arquivo_csv" name="arquivo_csv" accept=".csv" required>
 
         <label for="data_inicial">Data Inicial (YYYY-MM-DD):</label>
@@ -84,7 +108,8 @@
         });
     });
 </script>
-    
+<!-- Botão de contato -->
+
     
 </body>
 
